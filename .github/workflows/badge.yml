@@ -36,7 +36,7 @@ jobs:
           mkdir -p "${BADGE_PATH%/*}"
           echo "##[set-output name=path;]${BADGE_PATH}"
         env:
-          COVERAGE: 60
+          COVERAGE: '60 hits/month'
           BADGE_PATH: ./badge.svg
 
       # Use the output from the `coverage` step
@@ -45,7 +45,7 @@ jobs:
         id: badge
         with:
           label: 'cdn.boredht.ml'
-          status: ${{ steps.coverage.outputs.lines }}
+          status: '75 hits/month'
           color: 'yellow'
           path: ${{ steps.coverage.outputs.path }}
 
