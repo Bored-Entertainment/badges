@@ -56,7 +56,7 @@ jobs:
         id: extract_branch
       - name: Commit badge
         env:
-          BADGE: ${{ steps.coverage.outputs.path }}
+          BADGE: ./badge.svg
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
