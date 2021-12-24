@@ -26,17 +26,6 @@ jobs:
       name: Create the Badge
       steps:
       - uses: actions/checkout@v1
-      
-      - name: Path for Badge
-        id: path
-        run: |
-          # Generates a GitHub Workflow output named `lines`
-          echo "##[set-output name=lines;]${COVERAGE}"
-          # Create the directory where badges will be saved, if needed
-          mkdir -p "${BADGE_PATH%/*}"
-          echo "##[set-output name=path;]${BADGE_PATH}"
-        env:
-          BADGE_PATH: ./badge.svg
 
       - name: Read Data From Json
         id: read-data
@@ -52,13 +41,13 @@ jobs:
           label: 'cdn.boredht.ml'
           status: ${{ steps.read-data.outputs.prop }}
           color: 'yellow'
-          path: ${{ steps.path.outputs.path }}
+          path: ./badge.svg
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
         with:
           name: badge
-          path: ${{ steps.coverage.outputs.path }}
+          path: ./badge.svg
           if-no-files-found: error
 
       - name: Extract branch name
