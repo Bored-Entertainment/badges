@@ -1,4 +1,4 @@
-name: Badge Create
+name: Monthly Badge Create
 on: [push]
 jobs:
   get-data:
