@@ -31,7 +31,7 @@ jobs:
         id: read-data
         uses: notiz-dev/github-action-json-property@release
         with: 
-          path: 'data/data.json'
+          path: 'month/data.json'
           prop_path: 'total'
 
       - name: Generate the badge SVG image
