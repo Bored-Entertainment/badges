@@ -11,6 +11,7 @@ jobs:
         with:
           NAME: time
           REPOSITORY: Bored-Entertainment/cdn-badge
+          BRANCH: main
           LABEL: 'Updated at'
           STATUS: ${{ steps.date.outputs.data }}
           COLOR: F1C40F
