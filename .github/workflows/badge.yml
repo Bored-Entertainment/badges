@@ -37,7 +37,7 @@ jobs:
           echo "##[set-output name=path;]${BADGE_PATH}"
         env:
           COVERAGE: 60
-          BADGE_PATH: badge.svg
+          BADGE_PATH: ./badge.svg
 
       # Use the output from the `coverage` step
       - name: Generate the badge SVG image
