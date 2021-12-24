@@ -1,5 +1,6 @@
 name: Monthly Badge Create
-on: [push]
+on:
+  schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   get-data:
       runs-on: ubuntu-latest
