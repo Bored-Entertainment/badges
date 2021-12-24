@@ -1,5 +1,8 @@
 # cdn badges
 
+## Yearly
+![yearly badge](badge-year.svg)
+
 ## Monthly
 ![monthly badge](badge-month.svg)
 
