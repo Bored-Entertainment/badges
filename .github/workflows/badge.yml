@@ -3,6 +3,7 @@ on: [push]
 jobs:
   get-data:
       runs-on: ubuntu-latest
+      name: Get Data
       steps:
         - name: Checkout 🛎️
           uses: actions/checkout@v2
@@ -22,7 +23,7 @@ jobs:
             target-folder: data # Saves the data into the 'data' directory on the master branch
   create-badge:
       runs-on: ubuntu-latest
-      name: A job to test this action
+      name: Create the Badge
       steps:
       - uses: actions/checkout@v1
 
@@ -35,7 +36,7 @@ jobs:
           mkdir -p "${BADGE_PATH%/*}"
           echo "##[set-output name=path;]${BADGE_PATH}"
         env:
-          COVERAGE: 53.5%
+          COVERAGE: 60
           BADGE_PATH: .github/badges/badge-create.svg
 
       # Use the output from the `coverage` step
