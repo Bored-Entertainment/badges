@@ -1,1 +1,3 @@
 # cdn-badge
+
+test
