@@ -1,0 +1,74 @@
+name: Badge Create
+on: [push]
+jobs:
+  get-data:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@v2
+          with:
+            persist-credentials: false
+
+        - name: Fetch API Data 📦
+          uses: JamesIves/fetch-api-data-action@2.0.0
+          with:
+            endpoint: https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/month
+
+        - name: Build and Deploy 🚀
+          uses: JamesIves/github-pages-deploy-action@4.1.7
+          with:
+            branch: main # Pushes the updates to the master branch.
+            folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
+            target-folder: data # Saves the data into the 'data' directory on the master branch
+  create-badge:
+      runs-on: ubuntu-latest
+      name: A job to test this action
+      steps:
+      - uses: actions/checkout@v1
+
+      - name: Generate a coverage value
+        id: coverage
+        run: |
+          # Generates a GitHub Workflow output named `lines`
+          echo "##[set-output name=lines;]${COVERAGE}"
+          # Create the directory where badges will be saved, if needed
+          mkdir -p "${BADGE_PATH%/*}"
+          echo "##[set-output name=path;]${BADGE_PATH}"
+        env:
+          COVERAGE: 53.5%
+          BADGE_PATH: .github/badges/test-badge.svg
+
+      # Use the output from the `coverage` step
+      - name: Generate the badge SVG image
+        uses: emibcn/badge-action@v1
+        id: badge
+        with:
+          label: 'Test coverage'
+          status: ${{ steps.coverage.outputs.lines }}
+          color: 'blue,555,daf'
+          path: ${{ steps.coverage.outputs.path }}
+
+      - name: Upload badge as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: badge
+          path: ${{ steps.coverage.outputs.path }}
+          if-no-files-found: error
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Commit badge
+        env:
+          BADGE: ${{ steps.coverage.outputs.path }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add "${BADGE}"
+          git commit -m "Add/Update badge"
+      - name: Push badge commit
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
