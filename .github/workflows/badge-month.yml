@@ -39,15 +39,15 @@ jobs:
         id: badge
         with:
           label: 'cdn.boredht.ml'
-          status: ${{ steps.read-data.outputs.prop }} + "hits/month"
+          status: ${{ steps.read-data.outputs.prop }} hits/month
           color: 'yellow'
-          path: ./badge.svg
+          path: ./badge-month.svg
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
         with:
           name: badge
-          path: ./badge.svg
+          path: ./badge-month.svg
           if-no-files-found: error
 
       - name: Extract branch name
@@ -56,12 +56,12 @@ jobs:
         id: extract_branch
       - name: Commit badge
         env:
-          BADGE: ./badge.svg
+          BADGE: ./badge-month.svg
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add "${BADGE}"
-          git commit -m "Add/Update badge"
+          git commit -m "Update monthly badge"
       - name: Push badge commit
         uses: ad-m/github-push-action@master
         with:
