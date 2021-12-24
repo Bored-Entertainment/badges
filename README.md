@@ -5,3 +5,6 @@
 
 ## Weekly
 ![weekly badge](badge-week.svg)
+
+## Daily
+![daily badge](badge-day.svg)
