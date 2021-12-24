@@ -1,0 +1,13 @@
+name: Create Badge
+'on':
+  push:
+    branches:
+      - master
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch API Data 📦
+        uses: JamesIves/fetch-api-data-action@2.0.0
+        with:
+          endpoint: https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/month
