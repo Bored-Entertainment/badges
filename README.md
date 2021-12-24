@@ -1,3 +1,3 @@
 # cdn-badge
 
-![monthly badge](monthly-badge.svg)
+![monthly badge](badge-month.svg)
