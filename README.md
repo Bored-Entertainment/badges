@@ -1,3 +1,3 @@
 # cdn-badge
 
-test
+![monthly badge](monthly-badge.svg)
