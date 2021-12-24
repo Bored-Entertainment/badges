@@ -1,0 +1,18 @@
+name: Create Badge
+on: [push]
+jobs:
+  badge_job:
+    runs-on: ubuntu-latest
+    steps:
+      - id: date
+        run: echo "##[set-output name=data;]$(date)"
+      - name: Time badge
+        uses: RubbaBoy/BYOB@v1.2.1
+        with:
+          NAME: time
+          REPOSITORY: Bored-Entertainment/cdn-badge
+          LABEL: 'Updated at'
+          STATUS: ${{ steps.date.outputs.data }}
+          COLOR: F1C40F
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
