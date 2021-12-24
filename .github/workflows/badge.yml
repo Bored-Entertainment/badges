@@ -45,7 +45,6 @@ jobs:
           path: 'data/data.json'
           prop_path: 'total'
 
-      # Use the output from the `coverage` step
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
         id: badge
@@ -53,7 +52,7 @@ jobs:
           label: 'cdn.boredht.ml'
           status: ${{ steps.read-data.outputs.prop }}
           color: 'yellow'
-          path: ./badge.svg
+          path: ${{ steps.path.outputs.path }}
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
