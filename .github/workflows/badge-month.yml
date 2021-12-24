@@ -20,7 +20,7 @@ jobs:
           with:
             branch: main # Pushes the updates to the master branch.
             folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
-            target-folder: data # Saves the data into the 'data' directory on the master branch
+            target-folder: month # Saves the data into the 'data' directory on the master branch
   create-badge:
       runs-on: ubuntu-latest
       name: Create the Badge
