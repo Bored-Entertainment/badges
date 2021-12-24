@@ -4,3 +4,4 @@
 ![monthly badge](badge-month.svg)
 
 ## Weekly
+![weekly badge](badge-week.svg)
