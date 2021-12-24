@@ -19,4 +19,9 @@ jobs:
         with:
           branch: main # Pushes the updates to the master branch.
           folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
-          target-folder: data # Saves the data into the 'data' directory on the master branch.
+          target-folder: ./ # Saves the data into the 'data' directory on the master branch.
+          
+      - name: test
+        run: |
+          JSON=$(cat ./data.json)
+          echo "::set-output name=matrix::${JSON//'%'/'%25'}"
