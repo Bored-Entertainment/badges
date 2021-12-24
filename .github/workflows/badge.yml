@@ -27,17 +27,12 @@ jobs:
       steps:
       - uses: actions/checkout@v1
 
-      - name: Generate a coverage value
-        id: coverage
-        run: |
-          # Generates a GitHub Workflow output named `lines`
-          echo "##[set-output name=lines;]${COVERAGE}"
-          # Create the directory where badges will be saved, if needed
-          mkdir -p "${BADGE_PATH%/*}"
-          echo "##[set-output name=path;]${BADGE_PATH}"
-        env:
-          COVERAGE: '60 hits/month'
-          BADGE_PATH: ./badge.svg
+      - name: Read Data From Json
+        id: read-data
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'data/data.json'
+          prop_path: 'total'
 
       # Use the output from the `coverage` step
       - name: Generate the badge SVG image
@@ -45,9 +40,9 @@ jobs:
         id: badge
         with:
           label: 'cdn.boredht.ml'
-          status: '75 hits/month'
+          status: ${{ steps.read-data.outputs.prop }}
           color: 'yellow'
-          path: ${{ steps.coverage.outputs.path }}
+          path: './badge.svg
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
