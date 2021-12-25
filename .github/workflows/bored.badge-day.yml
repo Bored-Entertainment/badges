@@ -28,6 +28,13 @@ jobs:
       name: Create the Badge
       steps:
       - uses: actions/checkout@v1
+      
+      - name: Remove old Badge
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git rm bored/day.svg
+          git commit -m "remove bored/day.svg"
 
       - name: Read Data From Json
         id: read-data
