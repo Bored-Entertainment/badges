@@ -1,6 +1,6 @@
 name: Bored Daily Badge
-on: [push]
-  # schedule: [{cron: "0 * * * *"}]
+on:
+  schedule: [{cron: "0 * * * *"}]
 jobs:
   create-badge:
       name: Create Badge
