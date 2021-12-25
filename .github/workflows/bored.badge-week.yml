@@ -1,6 +1,5 @@
 name: Bored Weekly Badge
-on:
-  schedule: [{cron: "0 0 * * *"}]
+on: [push]
 jobs:
   get-data:
       runs-on: ubuntu-latest
