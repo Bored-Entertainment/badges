@@ -1,5 +1,6 @@
 name: School Weekly Badge
-on: [push]
+on:
+  schedule: [{cron: "0 0 * * *"}]
 jobs:
   get-data:
       runs-on: ubuntu-latest
