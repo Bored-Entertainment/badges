@@ -1,6 +1,6 @@
 name: School Monthly Badge
-on:
-  schedule: [{cron: "0 0 1/2 * *"}]
+on: [push]
+  # schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   get-data:
       runs-on: ubuntu-latest
@@ -28,6 +28,16 @@ jobs:
       name: Create the Badge
       steps:
       - uses: actions/checkout@v1
+      
+      - name: Sigin to git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      
+      - name: Remove old Badge
+        run: |
+          git rm school/month.svg
+          git commit -m "remove school/month.svg"
 
       - name: Read Data From Json
         id: read-data
@@ -60,8 +70,6 @@ jobs:
         env:
           BADGE: ./school/month.svg
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add "${BADGE}"
           git commit -m "School Update Daily Badge"
       - name: Push badge commit
