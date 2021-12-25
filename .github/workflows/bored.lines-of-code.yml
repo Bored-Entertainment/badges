@@ -5,12 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     name: loc
     steps:
+      - run: "ls"
       - uses: actions/checkout@v1
       - name: install tokei
         run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
         
       - name: cloning borehtml
         run: "git clone https://github.com/PiSaucer/boredhtml.git"
+      - run: "cd boredhtml"
+      - run: "ls"
       - run: "cd boredhtml"
       - run: "ls"
         
