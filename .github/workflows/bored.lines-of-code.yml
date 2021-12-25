@@ -12,24 +12,25 @@ jobs:
       - name: cloning borehtml
         run: "git clone https://github.com/PiSaucer/boredhtml.git"
       - run: "cd boredhtml"
+      - run: "ls"
         
       - name: tokei 
         run: tokei --output json > data.json
       - run: cat data.json
       
-      - name: Build and Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
-        with:
-          branch: main # Pushes the updates to the master branch.
-          folder: / # The location of the data.json file saved by the Fetch API Data action.
-          target-folder: bored/loc # Saves the data into the 'data' directory on the master branch
+      - name: Read Data From Json
+        id: read-data
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'data.json'
+          prop_path: 'code'
             
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
         id: badge
         with:
           label: 'total lines'
-          status: 'function'
+          status: ${{ steps.read-data.outputs.prop }}
           color: 'yellow'
           path: ./bored/loc.svg
 
