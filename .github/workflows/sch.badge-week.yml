@@ -1,6 +1,6 @@
 name: School Weekly Badge
-on: [push]
-  #schedule: [{cron: "0 0 * * *"}]
+on:
+  schedule: [{cron: "0 0 * * *"}]
 jobs:
   create-badge:
       runs-on: ubuntu-latest
