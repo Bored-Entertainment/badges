@@ -1,10 +1,10 @@
 name: Bored Yearly Badge
-on:
-  schedule: [{cron: "0 0 1/2 * *"}]
+on: [push]
+  # schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
-  get-data:
+  create-badge:
       runs-on: ubuntu-latest
-      name: Get Data
+      name: Create Badge
       steps:
         - name: Checkout 🛎️
           uses: actions/checkout@v2
@@ -12,68 +12,53 @@ jobs:
             persist-credentials: false
 
         - name: Fetch API Data 📦
-          uses: JamesIves/fetch-api-data-action@2.0.0
-          with:
-            endpoint: https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/year
-
-        - name: Build and Deploy 🚀
-          uses: JamesIves/github-pages-deploy-action@4.1.7
-          with:
-            branch: main # Pushes the updates to the master branch.
-            folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
-            target-folder: bored/year # Saves the data into the 'data' directory on the master branch
-  create-badge:
-      needs: get-data
-      runs-on: ubuntu-latest
-      name: Create the Badge
-      steps:
-      - uses: actions/checkout@v1
+          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/year > data.json
+          
+        - name: Read Data From Json 📚
+          id: read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'data.json'
+            prop_path: 'total'
       
-      - name: Sigin to git
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-      
-      - name: Remove old Badge
-        run: |
-          git rm bored/year.svg
-          git commit -m "remove bored/year.svg"
+        - name: Sigin to git
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
 
-      - name: Read Data From Json
-        id: read-data
-        uses: notiz-dev/github-action-json-property@release
-        with: 
-          path: 'bored/year/data.json'
-          prop_path: 'total'
+        - name: Remove old Badge
+          run: |
+            git rm bored/year.svg
+            git commit -m "remove bored/year.svg"
 
-      - name: Generate the badge SVG image
-        uses: emibcn/badge-action@v1
-        id: badge
-        with:
-          label: 'cdn.boredht.ml'
-          status: ${{ steps.read-data.outputs.prop }} hits/year
-          color: 'yellow'
-          path: ./bored/year.svg
+        - name: Generate the badge SVG image
+          uses: emibcn/badge-action@v1
+          id: badge
+          with:
+            label: 'cdn.boredht.ml'
+            status: ${{ steps.read-data.outputs.prop }} hits/year
+            color: 'yellow'
+            path: ./bored/year.svg
 
-      - name: Upload badge as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: badge
-          path: ./bored/year.svg
-          if-no-files-found: error
+        - name: Upload badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: badge
+            path: ./bored/year.svg
+            if-no-files-found: error
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-      - name: Commit badge
-        env:
-          BADGE: ./bored/year.svg
-        run: |
-          git add "${BADGE}"
-          git commit -m "Bored Update Yearly Badge"
-      - name: Push badge commit
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.extract_branch.outputs.branch }}
+        - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+        - name: Commit badge
+          env:
+            BADGE: ./bored/year.svg
+          run: |
+            git add "${BADGE}"
+            git commit -m "Bored Update Yearly Badge"
+        - name: Push badge commit
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ steps.extract_branch.outputs.branch }}
