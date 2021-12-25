@@ -3,13 +3,13 @@
   <img align="left" src="https://cdn.boredht.ml/images/logo.png" alt="logo" height="42" width="42">
   <img align="right" src="https://cdn.schgnd.ml/images/logo.png" alt="logo" height="42" width="42">
   <h1>Badges for Bored Enterainment</h1>
-  
-  [![pages-build-deployment](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment)
-  [![license](https://badgen.net/github/license/Bored-Entertainment/badges)](LICENSE)
-  [![last commit](https://img.shields.io/github/last-commit/Bored-Entertainment/badges)](https://github.com/Bored-Entertainment/badges/commits/main)
-  ![size](https://github-size-badge.herokuapp.com/Bored-Entertainment/badges.svg)
-  [![discord](https://img.shields.io/badge/Discord-7qTNdXd?logo=discord&logoColor=white&color=5865F2)](https://discord.com/invite/7qTNdXd)
-  
+    
+  <a href="https://discord.com/invite/7qTNdXd"><img src="https://img.shields.io/badge/Discord-7qTNdXd?logo=discord&logoColor=white&color=5865F2"></a>
+  <a href="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg"></a>
+  <a href="https://github.com/Bored-Entertainment/badges/commits/main"><img src="https://img.shields.io/github/last-commit/Bored-Entertainment/badges"></a>
+  <a href="LICENSE"><img src="https://badgen.net/github/license/Bored-Entertainment/badges"></a>
+  <img src="https://github-size-badge.herokuapp.com/Bored-Entertainment/badges.svg">  
+      
 </div>
 
 ## Badges
