@@ -1,5 +1,12 @@
 # CDN Badges for Schoolgrounds
 
+## Lines of Code [![School Lines of Code](https://github.com/Bored-Entertainment/badges/actions/workflows/sch.lines-of-code.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/sch.lines-of-code.yml)
+![loc](loc.svg)
+
+```markdown
+![lines of code](https://badges.schgnd.ml/school/loc.svg)
+```
+
 ## Daily [![School Daily Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/sch.badge-day.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/sch.badge-day.yml)
 ![daily badge](day.svg)
 
