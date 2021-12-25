@@ -41,13 +41,13 @@ jobs:
           label: 'cdn.boredht.ml'
           status: ${{ steps.read-data.outputs.prop }} hits/year
           color: 'yellow'
-          path: ./bored/badge-year.svg
+          path: ./bored/year.svg
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
         with:
           name: badge
-          path: ./bored/badge-year.svg
+          path: ./bored/year.svg
           if-no-files-found: error
 
       - name: Extract branch name
@@ -56,7 +56,7 @@ jobs:
         id: extract_branch
       - name: Commit badge
         env:
-          BADGE: ./bored/badge-year.svg
+          BADGE: ./bored/year.svg
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
