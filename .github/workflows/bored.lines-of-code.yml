@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: loc
     steps:
+      - uses: actions/checkout@v1
       - name: install tokei
         run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
         
@@ -13,10 +14,16 @@ jobs:
       - run: "cd boredhtml"
         
       - name: tokei 
-        run: echo `tokei`
+        run: tokei --output json > data.json
+      - run: cat data.json
       
-      - uses: actions/checkout@v1
-      
+      - name: Build and Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: main # Pushes the updates to the master branch.
+          folder: / # The location of the data.json file saved by the Fetch API Data action.
+          target-folder: bored/loc # Saves the data into the 'data' directory on the master branch
+            
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
         id: badge
