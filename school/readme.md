@@ -4,26 +4,26 @@
 ![daily badge](day.svg)
 
 ```markdown
-![daily badge](https://bored-entertainment.github.io/cdn-badge/badge-day.svg)
+![daily badge](https://badges.schgnd.ml/school/day.svg)
 ```
 
 ## Weekly
 ![weekly badge](week.svg)
 
 ```markdown
-![weekly badge](https://bored-entertainment.github.io/cdn-badge/badge-week.svg)
+![weekly badge](https://badges.schgnd.ml/school/week.svg)
 ```
 
 ## Monthly
 ![monthly badge](month.svg)
 
 ```markdown
-![monthly badge](https://bored-entertainment.github.io/cdn-badge/badge-month.svg)
+![monthly badge](https://badges.schgnd.ml/school/month.svg)
 ```
 
 ## Yearly
 ![yearly badge](year.svg)
 
 ```markdown
-![yearly badge](https://bored-entertainment.github.io/cdn-badge/badge-year.svg)
+![yearly badge](https://badges.schgnd.ml/school/year.svg)
 ```
