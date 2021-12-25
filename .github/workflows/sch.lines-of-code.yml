@@ -40,7 +40,7 @@ jobs:
         id: badge
         with:
           label: 'total lines'
-          status: "{{ '{0:_.0f}'.format(steps.read-data.outputs.prop | int).replace('_', '.')}}"
+          status: ${{ steps.read-data.outputs.prop }}
           color: 'orange'
           path: ./school/loc.svg
 
