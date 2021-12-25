@@ -1,6 +1,6 @@
 name: Bored Monthly Badge 
-on: [push]
-  # schedule: [{cron: "0 0 1/2 * *"}]
+on:
+  schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   create-badge:
       runs-on: ubuntu-latest
