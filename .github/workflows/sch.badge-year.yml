@@ -22,6 +22,7 @@ jobs:
             folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
             target-folder: school/year # Saves the data into the 'data' directory on the master branch
   create-badge:
+      needs: get-data
       runs-on: ubuntu-latest
       name: Create the Badge
       steps:
