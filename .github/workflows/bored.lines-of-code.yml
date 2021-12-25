@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: loc
     steps:
-      #- run: 
+      - run: cargo install --git https://github.com/XAMPPRocky/tokei.git tokei
       - uses: actions/checkout@v1
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
