@@ -1,4 +1,16 @@
-# Badges for Bored Enterainment
+<div align="center" style="display: block; margin-left: auto; margin-right: auto;">  
+    
+  <img align="left" src="https://cdn.boredht.ml/images/logo.png" alt="logo" height="42" width="42">
+  <img align="right" src="https://cdn.schgnd.ml/images/logo.png" alt="logo" height="42" width="42">
+  <h1>Badges for Bored Enterainment</h1>
+  
+  [![pages-build-deployment](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment)
+  ![license](https://badgen.net/github/license/Bored-Entertainment/badges)
+  ![last commit](https://img.shields.io/github/last-commit/Bored-Entertainment/badges)
+  ![size](https://github-size-badge.herokuapp.com/Bored-Entertainment/badges.svg)
+  [![discord](https://img.shields.io/badge/Discord-7qTNdXd?logo=discord&logoColor=white&color=5865F2)](https://discord.com/invite/7qTNdXd)
+  
+</div>
 
 ## Badges
 - [Bored in School Right Now Badges](bored/)
@@ -33,6 +45,6 @@ See also the list of other [contributors](https://github.com/Bored-Entertainment
 
 Pull requests are welcome. If you find any problem(s) in boredhtml, feel free to submit an issue. This includes stuff like vulnerabilities, or even the most trivial issues (such as typoes.) If you know how to fix an issue, feel free to make a pull request for the issue. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our [code of conduct](CODE_OF_CONDUCT.md), and the process for submitting pull requests to us. If you would like to suggest a feature or change, submit it as an issue as well or message us on [discord](https://discord.com/invite/7qTNdXd); it will be given the appropriate tag once we have seen it. We love to discuss any major changes with you.
 
-# License ![badge](https://badgen.net/github/license/Bored-Entertainment/cdn-badge)
+# License ![badge](https://badgen.net/github/license/Bored-Entertainment/badges)
 
 Our [`LICENSE`](LICENSE) file is based off of the [MIT License](https://choosealicense.com/licenses/mit/).
