@@ -6,7 +6,7 @@ jobs:
     name: loc
     steps:
       - name: install tokei
-        run: "cargo install --git https://github.com/XAMPPRocky/tokei.git"
+        run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
         
       - name: tokei 
         run: echo `tokei`
