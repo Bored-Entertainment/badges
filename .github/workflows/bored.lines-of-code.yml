@@ -6,10 +6,7 @@ jobs:
     name: loc
     steps:
       #- run: 
-      
-    steps:
       - uses: actions/checkout@v1
-
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
         id: badge
@@ -30,6 +27,7 @@ jobs:
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+        
       - name: Commit badge
         env:
           BADGE: ./bored/loc.svg
@@ -37,7 +35,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add "${BADGE}"
-          git commit -m "Bored Update Daily Badge"
+          git commit -m "Bored Update LOC Badge"
+          
       - name: Push badge commit
         uses: ad-m/github-push-action@master
         with:
