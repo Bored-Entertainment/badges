@@ -12,13 +12,9 @@ jobs:
         
       - name: cloning borehtml
         run: "git clone https://github.com/PiSaucer/boredhtml.git"
-      - run: "cd boredhtml"
-      - run: "ls"
-      - run: "cd boredhtml"
-      - run: "ls"
-        
+
       - name: tokei 
-        run: tokei --output json > data.json
+        run: tokei boredhtml --output json > data.json
       - run: cat data.json
       
       - name: Read Data From Json
@@ -26,7 +22,7 @@ jobs:
         uses: notiz-dev/github-action-json-property@release
         with: 
           path: 'data.json'
-          prop_path: 'code'
+          prop_path: 'Total.code'
             
       - name: Generate the badge SVG image
         uses: emibcn/badge-action@v1
