@@ -29,10 +29,13 @@ jobs:
       steps:
       - uses: actions/checkout@v1
       
-      - name: Remove old Badge
+      - name: Sigin to git
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      
+      - name: Remove old Badge
+        run: |
           git rm bored/day.svg
           git commit -m "remove bored/day.svg"
 
@@ -67,8 +70,6 @@ jobs:
         env:
           BADGE: ./bored/day.svg
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           git add "${BADGE}"
           git commit -m "Bored Update Daily Badge"
       - name: Push badge commit
