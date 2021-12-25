@@ -1,6 +1,5 @@
-name: Weekly Badge Create
-on:
-  schedule: [{cron: "0 0 * * *"}]
+name: Bored Weekly Badge
+on: [push]
 jobs:
   get-data:
       runs-on: ubuntu-latest
@@ -21,7 +20,7 @@ jobs:
           with:
             branch: main # Pushes the updates to the master branch.
             folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
-            target-folder: week # Saves the data into the 'data' directory on the master branch
+            target-folder: bored/week # Saves the data into the 'data' directory on the master branch
   create-badge:
       runs-on: ubuntu-latest
       name: Create the Badge
@@ -32,7 +31,7 @@ jobs:
         id: read-data
         uses: notiz-dev/github-action-json-property@release
         with: 
-          path: 'week/data.json'
+          path: 'bored/week/data.json'
           prop_path: 'total'
 
       - name: Generate the badge SVG image
@@ -42,13 +41,13 @@ jobs:
           label: 'cdn.boredht.ml'
           status: ${{ steps.read-data.outputs.prop }} hits/week
           color: 'yellow'
-          path: ./badge-week.svg
+          path: ./bored/badge-week.svg
 
       - name: Upload badge as artifact
         uses: actions/upload-artifact@v2
         with:
           name: badge
-          path: ./badge-week.svg
+          path: ./bored/badge-week.svg
           if-no-files-found: error
 
       - name: Extract branch name
@@ -57,12 +56,12 @@ jobs:
         id: extract_branch
       - name: Commit badge
         env:
-          BADGE: ./badge-week.svg
+          BADGE: ./bored/badge-week.svg
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add "${BADGE}"
-          git commit -m "Update Weekly Badge"
+          git commit -m "Bored Update Weekly Badge"
       - name: Push badge commit
         uses: ad-m/github-push-action@master
         with:
