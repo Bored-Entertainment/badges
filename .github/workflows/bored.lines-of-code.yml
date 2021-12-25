@@ -1,6 +1,6 @@
 name: Bored Lines of Code
-on:
-  schedule: [{cron: "0 0 1 * *"}]
+on: [push]
+  #schedule: [{cron: "0 0 1 * *"}]
 jobs:
   loc:
     runs-on: ubuntu-latest
