@@ -1,5 +1,8 @@
 # CDN Badges for Bored in School Right now
 
+## Lines of Code [![Bored Lines of Code](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.lines-of-code.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.lines-of-code.yml)
+![loc](loc.svg)
+
 ## Daily [![Bored Daily Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-day.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-day.yml)
 ![daily badge](day.svg)
 
