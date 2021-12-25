@@ -1,0 +1,45 @@
+name: Bored Lines of Code
+on: [push]
+jobs:
+  loc:
+    runs-on: ubuntu-latest
+    name: loc
+    steps:
+      #- run: 
+      
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Generate the badge SVG image
+        uses: emibcn/badge-action@v1
+        id: badge
+        with:
+          label: 'total lines'
+          status: 'function'
+          color: 'yellow'
+          path: ./bored/loc.svg
+
+      - name: Upload badge as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: badge
+          path: ./bored/loc.svg
+          if-no-files-found: error
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Commit badge
+        env:
+          BADGE: ./bored/loc.svg
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add "${BADGE}"
+          git commit -m "Bored Update Daily Badge"
+      - name: Push badge commit
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
