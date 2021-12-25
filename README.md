@@ -8,7 +8,7 @@
   <a href="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg"></a>
   <a href="https://github.com/Bored-Entertainment/badges/commits/main"><img src="https://img.shields.io/github/last-commit/Bored-Entertainment/badges"></a>
   <a href="LICENSE"><img src="https://badgen.net/github/license/Bored-Entertainment/badges"></a>
-  <img src="https://github-size-badge.herokuapp.com/Bored-Entertainment/badges.svg">  
+  <img src="https://img.shields.io/github/repo-size/Bored-Entertainment/badges?color=green">  
       
 </div>
 
