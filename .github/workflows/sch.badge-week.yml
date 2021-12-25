@@ -1,0 +1,69 @@
+name: School Weekly Badge
+on: [push]
+jobs:
+  get-data:
+      runs-on: ubuntu-latest
+      name: Get Data
+      steps:
+        - name: Checkout 🛎️
+          uses: actions/checkout@v2
+          with:
+            persist-credentials: false
+
+        - name: Fetch API Data 📦
+          uses: JamesIves/fetch-api-data-action@2.0.0
+          with:
+            endpoint: https://data.jsdelivr.com/v1/package/gh/Bored-Entertainment/Schoolgrounds/stats/version/week
+
+        - name: Build and Deploy 🚀
+          uses: JamesIves/github-pages-deploy-action@4.1.7
+          with:
+            branch: main # Pushes the updates to the master branch.
+            folder: fetch-api-data-action # The location of the data.json file saved by the Fetch API Data action.
+            target-folder: school/week # Saves the data into the 'data' directory on the master branch
+  create-badge:
+      runs-on: ubuntu-latest
+      name: Create the Badge
+      steps:
+      - uses: actions/checkout@v1
+
+      - name: Read Data From Json
+        id: read-data
+        uses: notiz-dev/github-action-json-property@release
+        with: 
+          path: 'school/week/data.json'
+          prop_path: 'total'
+
+      - name: Generate the badge SVG image
+        uses: emibcn/badge-action@v1
+        id: badge
+        with:
+          label: 'cdn.schgnd.ml'
+          status: ${{ steps.read-data.outputs.prop }} hits/week
+          color: 'orange'
+          path: ./school/week.svg
+
+      - name: Upload badge as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: badge
+          path: ./school/week.svg
+          if-no-files-found: error
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+      - name: Commit badge
+        env:
+          BADGE: ./school/week.svg
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add "${BADGE}"
+          git commit -m "School Update Daily Badge"
+      - name: Push badge commit
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
