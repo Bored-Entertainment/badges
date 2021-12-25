@@ -4,26 +4,26 @@
 ![daily badge](day.svg)
 
 ```markdown
-![daily badge](https://bored-entertainment.github.io/cdn-badge/badge-day.svg)
+![daily badge](https://badges.boredht.ml/bored/day.svg)
 ```
 
 ## Weekly
 ![weekly badge](week.svg)
 
 ```markdown
-![weekly badge](https://bored-entertainment.github.io/cdn-badge/badge-week.svg)
+![weekly badge](https://badges.boredht.ml/bored/week.svg)
 ```
 
 ## Monthly
 ![monthly badge](month.svg)
 
 ```markdown
-![monthly badge](https://bored-entertainment.github.io/cdn-badge/badge-month.svg)
+![monthly badge](https://badges.boredht.ml/bored/month.svg)
 ```
 
 ## Yearly
 ![yearly badge](year.svg)
 
 ```markdown
-![yearly badge](https://bored-entertainment.github.io/cdn-badge/badge-year.svg)
+![yearly badge](https://badges.boredht.ml/bored/year.svg)
 ```
