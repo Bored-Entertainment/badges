@@ -1,5 +1,9 @@
 # Badges for Bored Enterainment
 
+## Domains
+- [badges.boredht.ml](https://badges.boredht.ml/)
+- [badges.schgnd.ml](https://badges.schgnd.ml/)
+
 ## CDNs
 
 Since [cdn.boredht.ml](https://cdn.boredht.ml/) and [cdn.schgnd.ml](https://cdn.schgnd.ml/) are the short hand of [jsDelivr](https://www.jsdelivr.com/), we have access to the [data.jsdelivr.com](https://github.com/jsdelivr/data.jsdelivr.com) for the [Bored in School Right HTML Repository](https://www.github.com/pisaucer/boredhtml) and [Schoolgrounds Repository](https://github.com/Bored-Entertainment/Schoolgrounds). So using [JamesIves/fetch-api-data-action](https://github.com/marketplace/actions/fetch-api-data) to get the data of the hits per day, week, month, and year we are able to save it to jsons. To create badges, we used [notiz-dev/github-action-json-property](https://github.com/marketplace/actions/get-json-property) to read the data from the jsons and pass the total to [emibcn/badge-action](https://github.com/marketplace/actions/badge-action). Each of the workflows are schedule to update on there own thanks to [GitHub Actions](https://github.com/features/actions). 
