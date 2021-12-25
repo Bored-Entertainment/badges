@@ -5,8 +5,8 @@
   <h1>Badges for Bored Enterainment</h1>
   
   [![pages-build-deployment](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment)
-  ![license](https://badgen.net/github/license/Bored-Entertainment/badges)
-  ![last commit](https://img.shields.io/github/last-commit/Bored-Entertainment/badges)
+  [![license](https://badgen.net/github/license/Bored-Entertainment/badges)](LICENSE)
+  [![last commit](https://img.shields.io/github/last-commit/Bored-Entertainment/badges)](https://github.com/Bored-Entertainment/badges/commits/main)
   ![size](https://github-size-badge.herokuapp.com/Bored-Entertainment/badges.svg)
   [![discord](https://img.shields.io/badge/Discord-7qTNdXd?logo=discord&logoColor=white&color=5865F2)](https://discord.com/invite/7qTNdXd)
   
