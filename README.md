@@ -11,6 +11,7 @@ Since [cdn.boredht.ml](https://cdn.boredht.ml/) and [cdn.schgnd.ml](https://cdn.
 All of these allows us to create custom badges with precise data for our Content Delivery Network (CDN).
 
 - [Bored in School Right Now CDN Badges](bored/)
+- [Schoolground CDN Badges](school/)
 
 # Built with
 - [GitHub Actions](https://github.com/features/actions)
