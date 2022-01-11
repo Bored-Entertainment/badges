@@ -122,7 +122,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.extract_branch.outputs.branch }}
             
-create-weekly-badge:
+  create-weekly-badge:
     name: Create Weekly Badge
     runs-on: ubuntu-latest
     steps:
