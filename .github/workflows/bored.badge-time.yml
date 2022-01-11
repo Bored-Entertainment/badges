@@ -67,6 +67,7 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: ${{ steps.extract_branch.outputs.branch }}
   create-monthly-badge:
+    needs: create-day-badge
     name: Create Monthly Badge
     runs-on: ubuntu-latest
     steps:
@@ -123,6 +124,7 @@ jobs:
           branch: ${{ steps.extract_branch.outputs.branch }}
             
   create-weekly-badge:
+    needs: create-monthly-badge
     name: Create Weekly Badge
     runs-on: ubuntu-latest
     steps:
