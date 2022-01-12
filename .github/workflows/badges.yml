@@ -476,108 +476,108 @@ jobs:
     runs-on: ubuntu-latest
     name: Line of Code
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-      
-      - name: Sigin to git
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git pull
-      
-      - name: Remove old Badges
-        run: |
-          git rm bored/loc.svg
-          git commit -m "remove bored/loc.svg"
-          git rm school/loc.svg
-          git commit -m "remove school/loc.svg"
-      
-      - name: install tokei
-        run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
-        
-      - name: cloning boredhtml
-        run: "git clone https://github.com/PiSaucer/boredhtml.git"
-      
-      - name: cloning schoolgroudns
-        run: "git clone https://github.com/Bored-Entertainment/Schoolgrounds.git"
+        - name: Checkout 🛎️
+          uses: actions/checkout@v2
+          with:
+            persist-credentials: false
 
-      - name: Bored tokei 
-        run: tokei boredhtml --output json > bored.json
-      - run: cat bored.json
-      
-      - name: School tokei 
-        run: tokei Schoolgrounds --output json > school.json
-      - run: cat school.json
-      
-      - name: Read Bored Data From Json
-        id: bored-read-data
-        uses: notiz-dev/github-action-json-property@release
-        with: 
-          path: 'bored.json'
-          prop_path: 'Total.code'
-          
-      - name: Read School Data From Json
-        id: school-read-data
-        uses: notiz-dev/github-action-json-property@release
-        with: 
-          path: 'school.json'
-          prop_path: 'Total.code'
-          
-      - name: Generate the school badge SVG image
-        uses: emibcn/badge-action@v1
-        id: school-badge
-        with:
-          label: 'total lines'
-          status: ${{ steps.school-read-data.outputs.prop }}
-          color: 'orange'
-          path: ./school/loc.svg
-            
-      - name: Generate the bored badge SVG image
-        uses: emibcn/badge-action@v1
-        id: bored-badge
-        with:
-          label: 'total lines'
-          status: ${{ steps.bored-read-data.outputs.prop }}
-          color: 'yellow'
-          path: ./bored/loc.svg
+        - name: Sigin to git
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git pull
 
-      - name: Upload bored badge as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: bored-badge
-          path: ./bored/loc.svg
-          if-no-files-found: error
-          
-       - name: Upload school badge as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: school-badge
-          path: ./school/loc.svg
-          if-no-files-found: error
+        - name: Remove old Badges
+          run: |
+            git rm bored/loc.svg
+            git commit -m "remove bored/loc.svg"
+            git rm school/loc.svg
+            git commit -m "remove school/loc.svg"
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-        
-      - name: Commit bored badge
-        env:
-          BORED_BADGE: ./bored/loc.svg
-        run: |
-          git add "${BORED_BADGE}"
-          git commit -m "Bored Update LOC Badge"
-          
-      - name: Commit school badge
-        env:
-          SCHOOL_BADGE: ./school/loc.svg
-        run: |
-          git add "${SCHOOL_BADGE}"
-          git commit -m "School Update LOC Badge"
-          
-      - name: Push badge commit
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ steps.extract_branch.outputs.branch }}
+        - name: install tokei
+          run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
+
+        - name: cloning boredhtml
+          run: "git clone https://github.com/PiSaucer/boredhtml.git"
+
+        - name: cloning schoolgroudns
+          run: "git clone https://github.com/Bored-Entertainment/Schoolgrounds.git"
+
+        - name: Bored tokei 
+          run: tokei boredhtml --output json > bored.json
+        - run: cat bored.json
+
+        - name: School tokei 
+          run: tokei Schoolgrounds --output json > school.json
+        - run: cat school.json
+
+        - name: Read Bored Data From Json
+          id: bored-read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'bored.json'
+            prop_path: 'Total.code'
+
+        - name: Read School Data From Json
+          id: school-read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'school.json'
+            prop_path: 'Total.code'
+
+        - name: Generate the school badge SVG image
+          uses: emibcn/badge-action@v1
+          id: school-badge
+          with:
+            label: 'total lines'
+            status: ${{ steps.school-read-data.outputs.prop }}
+            color: 'orange'
+            path: ./school/loc.svg
+
+        - name: Generate the bored badge SVG image
+          uses: emibcn/badge-action@v1
+          id: bored-badge
+          with:
+            label: 'total lines'
+            status: ${{ steps.bored-read-data.outputs.prop }}
+            color: 'yellow'
+            path: ./bored/loc.svg
+
+        - name: Upload bored badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: bored-badge
+            path: ./bored/loc.svg
+            if-no-files-found: error
+
+         - name: Upload school badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: school-badge
+            path: ./school/loc.svg
+            if-no-files-found: error
+
+        - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+
+        - name: Commit bored badge
+          env:
+            BORED_BADGE: ./bored/loc.svg
+          run: |
+            git add "${BORED_BADGE}"
+            git commit -m "Bored Update LOC Badge"
+
+        - name: Commit school badge
+          env:
+            SCHOOL_BADGE: ./school/loc.svg
+          run: |
+            git add "${SCHOOL_BADGE}"
+            git commit -m "School Update LOC Badge"
+
+        - name: Push badge commit
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ steps.extract_branch.outputs.branch }}
