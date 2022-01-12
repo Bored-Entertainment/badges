@@ -80,6 +80,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git pull
 
       - name: Fetch API Data 📦
         run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/month > month.json
@@ -137,6 +138,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git pull
 
       - name: Fetch API Data 📦
         run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/week > week.json
