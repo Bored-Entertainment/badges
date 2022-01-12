@@ -1,8 +1,6 @@
 name: Bored Badges
-'on':
-  push:
-    branches:
-      - main
+on:
+  schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   create-day-badge:
       name: Create Day Badge
@@ -264,7 +262,7 @@ jobs:
       - name: install tokei
         run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
         
-      - name: cloning borehtml
+      - name: cloning boredhtml
         run: "git clone https://github.com/PiSaucer/boredhtml.git"
 
       - name: tokei 
