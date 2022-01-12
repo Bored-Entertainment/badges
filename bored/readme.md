@@ -1,4 +1,6 @@
-# CDN Badges for Bored in School Right now
+# Badges for Bored in School Right now
+
+[![Bored Badges](https://github.com/Bored-Entertainment/badges/actions/workflows/bored-badge.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored-badge.yml)
 
 ## Lines of Code
 ![loc](loc.svg)
@@ -34,14 +36,3 @@
 ```markdown
 ![yearly badge](https://badges.boredht.ml/bored/year.svg)
 ```
-
-# Status of workflows
-[![Bored Lines of Code](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.lines-of-code.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.lines-of-code.yml)
-
-[![Bored Daily Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-day.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-day.yml)
-
-[![Bored Weekly Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-week.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-week.yml)
-
-[![Bored Monthly Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-month.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-month.yml)
-
-[![Bored Yearly Badge](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-year.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored.badge-year.yml)
