@@ -241,10 +241,14 @@ jobs:
           branch: ${{ steps.extract_branch.outputs.branch }}
           
   loc:
+    needs: create-year-badge
     runs-on: ubuntu-latest
     name: Line of Code
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       
       - name: Sigin to git
         run: |
