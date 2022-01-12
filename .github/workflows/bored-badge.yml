@@ -1,6 +1,8 @@
 name: Bored Badges
-on:
-  schedule: [{cron: "0 0 1/2 * *"}]
+'on':
+  push:
+    branches:
+      - main
 jobs:
   create-day-badge:
       name: Create Day Badge
