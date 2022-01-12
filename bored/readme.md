@@ -1,6 +1,6 @@
 # Badges for Bored in School Right now
 
-[![Bored Badges](https://github.com/Bored-Entertainment/badges/actions/workflows/bored-badge.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/bored-badge.yml)
+[![Badges](https://github.com/Bored-Entertainment/badges/actions/workflows/badges.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/badges.yml)
 
 ## Lines of Code
 ![loc](loc.svg)
