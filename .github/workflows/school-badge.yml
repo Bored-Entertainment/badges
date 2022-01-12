@@ -1,9 +1,6 @@
 name: Schoolground Badges
 on:
-  workflow_run:
-    workflows: ["Bored Badges"]
-    types:
-      - completed
+  schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   create-day-badge:
       name: Create Day Badge
