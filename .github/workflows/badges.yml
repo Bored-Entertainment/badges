@@ -525,7 +525,7 @@ jobs:
           path: 'school.json'
           prop_path: 'Total.code'
           
-       - name: Generate the school badge SVG image
+      - name: Generate the school badge SVG image
         uses: emibcn/badge-action@v1
         id: school-badge
         with:
