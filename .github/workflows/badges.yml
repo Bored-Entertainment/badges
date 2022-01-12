@@ -517,6 +517,10 @@ jobs:
         with: 
           path: 'bored.json'
           prop_path: 'Total.code'
+          
+      - name: Bored Comma Test
+        id: bored-comma
+        run: echo ${{ steps.bored-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'
 
       - name: Read School Data From Json
         id: school-read-data
@@ -539,7 +543,7 @@ jobs:
         id: bored-badge
         with:
           label: 'total lines'
-          status: echo ${{ steps.bored-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'
+          status: ${{ steps.bored-comma.outputs.prop }}
           color: 'yellow'
           path: ./bored/loc.svg
 
