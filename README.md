@@ -51,3 +51,4 @@ Pull requests are welcome. If you find any problem(s) in boredhtml, feel free to
 # License ![badge](https://badgen.net/github/license/Bored-Entertainment/badges)
 
 Our [`LICENSE`](LICENSE) file is based off of the [MIT License](https://choosealicense.com/licenses/mit/).
+
