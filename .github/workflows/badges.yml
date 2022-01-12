@@ -239,7 +239,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.extract_branch.outputs.branch }}
- create-school-day-badge:
+  create-school-day-badge:
       name: Create School Day Badge
       needs: create-bored-year-badge
       runs-on: ubuntu-latest
