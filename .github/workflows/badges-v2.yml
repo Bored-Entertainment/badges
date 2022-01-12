@@ -56,7 +56,7 @@ jobs:
             prop_path: 'total'
             
         # Add Commas to Data
-        - name: Comma Day
+        - name: Comma Data
           id: comma
           run: |
             echo "::set-output name=day_comma::`echo ${{ steps.read-day-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
@@ -71,7 +71,7 @@ jobs:
             git rm bored/month.svg
             git rm bored/week.svg
             git rm bored/year.svg
-            git commit -m "remove Old Bored Badges"
+            git commit -m "Remove Old Bored Badges"
             
         # Create Badges    
         - name: Generate Bored Day Badge SVG Image
@@ -144,7 +144,7 @@ jobs:
           uses: josStorer/get-current-time@v2
           id: current-time
           with:
-            format: MMDDYYYY
+            format: MM.DD.YYYY
           
         # Commit Badges
         - name: Commit badges
@@ -159,6 +159,167 @@ jobs:
             git add "${WEEK_BADGE}"
             git add "${YEAR_BADGE}"
             git commit -m "Bored CDN Badges ${{ steps.current-time.outputs.formattedTime }}"
+            
+        - name: Push Badge commit
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ steps.extract_branch.outputs.branch }}
+  create-school-cdn-badge:
+      name: Create School CDN Badges
+      runs-on: ubuntu-latest
+      steps:
+        # Setup
+        - name: Checkout 🛎️
+          uses: actions/checkout@v2
+          with:
+            persist-credentials: false
+        
+        - name: Sigin to git
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            
+        # Fetch API
+        - name: Fetch Day API Data 📦
+          run: curl https://data.jsdelivr.com/v1/package/gh/Bored-Entertainment/Schoolgrounds/stats/version/day > day.json
+        - name: Fetch Month API Data 📦
+          run: curl https://data.jsdelivr.com/v1/package/gh/Bored-Entertainment/Schoolgrounds/stats/version/month > month.json
+        - name: Fetch Week API Data 📦
+          run: curl https://data.jsdelivr.com/v1/package/gh/Bored-Entertainment/Schoolgrounds/stats/version/week > week.json
+        - name: Fetch Year API Data 📦
+          run: curl https://data.jsdelivr.com/v1/package/gh/Bored-Entertainment/Schoolgrounds/stats/version/year > year.json
+
+        # Read Data
+        - name: Read Day Data From Json 📚
+          id: read-day-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'day.json'
+            prop_path: 'total'
+        - name: Read Month Data From Json 📚
+          id: read-month-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'month.json'
+            prop_path: 'total'
+        - name: Read Week Data From Json 📚
+          id: read-week-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'week.json'
+            prop_path: 'total'
+        - name: Read Year Data From Json 📚
+          id: read-year-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'year.json'
+            prop_path: 'total'
+            
+        # Add Commas to Data
+        - name: Comma Data
+          id: comma
+          run: |
+            echo "::set-output name=day_comma::`echo ${{ steps.read-day-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
+            echo "::set-output name=month_comma::`echo ${{ steps.read-month-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+            echo "::set-output name=week_comma::`echo ${{ steps.read-week-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+            echo "::set-output name=year_comma::`echo ${{ steps.read-year-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+
+        # Remove Old Badges
+        - name: Remove Old School Badges
+          run: |
+            git rm school/day.svg
+            git rm school/month.svg
+            git rm school/week.svg
+            git rm school/year.svg
+            git commit -m "Remove Old School Badges"
+            
+        # Create Badges    
+        - name: Generate School Day Badge SVG Image
+          uses: emibcn/badge-action@v1
+          id: day-badge
+          with:
+            label: 'cdn.schgnd.ml'
+            status: ${{ steps.comma.outputs.day_comma }} hits/today
+            color: 'orange'
+            path: ./school/day.svg
+        - name: Generate School Month Badge SVG Image
+          uses: emibcn/badge-action@v1
+          id: month-badge
+          with:
+            label: 'cdn.schgnd.ml'
+            status: ${{ steps.comma.outputs.month_comma }} hits/month
+            color: 'orange'
+            path: ./school/month.svg
+        - name: Generate School Week Badge SVG Image
+          uses: emibcn/badge-action@v1
+          id: week-badge
+          with:
+            label: 'cdn.schgnd.ml'
+            status: ${{ steps.comma.outputs.week_comma }} hits/week
+            color: 'orange'
+            path: ./school/week.svg
+        - name: Generate School Year Badge SVG Image
+          uses: emibcn/badge-action@v1
+          id: year-badge
+          with:
+            label: 'cdn.schgnd.ml'
+            status: ${{ steps.comma.outputs.year_comma }} hits/year
+            color: 'orange'
+            path: ./school/year.svg
+            
+        # Upload Badges
+        - name: Upload Day badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: day-badge
+            path: ./school/day.svg
+            if-no-files-found: error
+        - name: Upload Month badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: month-badge
+            path: ./school/month.svg
+            if-no-files-found: error
+        - name: Upload Week badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: week-badge
+            path: ./school/week.svg
+            if-no-files-found: error
+        - name: Upload Year badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: year-badge
+            path: ./school/year.svg
+            if-no-files-found: error
+
+        # Find the Main Branch
+        - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+          
+        # Get Time
+        - name: Get current time
+          uses: josStorer/get-current-time@v2
+          id: current-time
+          with:
+            format: MM.DD.YYYY
+          
+        # Commit Badges
+        - name: Commit badges
+          env:
+            DAY_BADGE: ./school/day.svg
+            MONTH_BADGE: ./school/month.svg
+            WEEK_BADGE: ./school/week.svg
+            YEAR_BADGE: ./school/year.svg
+          run: |
+            git add "${DAY_BADGE}"
+            git add "${MONTH_BADGE}"
+            git add "${WEEK_BADGE}"
+            git add "${YEAR_BADGE}"
+            git commit -m "School CDN Badges ${{ steps.current-time.outputs.formattedTime }}"
             
         - name: Push Badge commit
           uses: ad-m/github-push-action@master
