@@ -522,13 +522,17 @@ jobs:
         with: 
           path: 'school.json'
           prop_path: 'Total.code'
+          
+      - name: Bored Commas Test
+        id: bored-comma-test 
+        run: printf "%'d" ${{ steps.school-read-data.outputs.prop }}
 
       - name: Generate the school badge SVG image
         uses: emibcn/badge-action@v1
         id: school-badge
         with:
           label: 'total lines'
-          status: ${{ steps.school-read-data.outputs.prop }}
+          status: ${{ steps.bored-comma-test.outputs.prop }}
           color: 'orange'
           path: ./school/loc.svg
 
