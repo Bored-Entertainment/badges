@@ -27,7 +27,7 @@ jobs:
         - name: Fetch Week API Data 📦
           run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/week > week.json
         - name: Fetch Year API Data 📦
-           run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/year > year.json
+          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/year > year.json
 
         # Read Data
         - name: Read Day Data From Json 📚
@@ -57,13 +57,13 @@ jobs:
             
         # Add Commas to Data
         - name: Comma Day
-        id: comma
-        run: |
-          echo "::set-output name=day_comma::`echo ${{ steps.read-day-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
-          echo "::set-output name=month_comma::`echo ${{ steps.read-month-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
-          echo "::set-output name=week_comma::`echo ${{ steps.read-week-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
-          echo "::set-output name=year_comma::`echo ${{ steps.read-year-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
-            
+          id: comma
+          run: |
+            echo "::set-output name=day_comma::`echo ${{ steps.read-day-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
+            echo "::set-output name=month_comma::`echo ${{ steps.read-month-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+            echo "::set-output name=week_comma::`echo ${{ steps.read-week-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+            echo "::set-output name=year_comma::`echo ${{ steps.read-year-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+
         # Remove Old Badges
         - name: Remove Old Bored Badges
           run: |
@@ -120,13 +120,13 @@ jobs:
             name: month-badge
             path: ./bored/month.svg
             if-no-files-found: error
-         - name: Upload Week badge as artifact
+        - name: Upload Week badge as artifact
           uses: actions/upload-artifact@v2
           with:
             name: week-badge
             path: ./bored/week.svg
             if-no-files-found: error
-         - name: Upload Year badge as artifact
+        - name: Upload Year badge as artifact
           uses: actions/upload-artifact@v2
           with:
             name: year-badge
