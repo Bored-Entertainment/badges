@@ -166,6 +166,7 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: ${{ steps.extract_branch.outputs.branch }}
   create-school-cdn-badge:
+      needs: create-bored-cdn-badge
       name: Create School CDN Badges
       runs-on: ubuntu-latest
       steps:
