@@ -520,7 +520,7 @@ jobs:
           
       - name: Bored Comma Test
         id: bored-comma
-        run: echo ${{ steps.bored-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'
+        run: echo "BORED_COMMA=${{ steps.bored-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'" >> $GITHUB_ENV
 
       - name: Read School Data From Json
         id: school-read-data
@@ -543,7 +543,7 @@ jobs:
         id: bored-badge
         with:
           label: 'total lines'
-          status: ${{ steps.bored-comma.outputs.prop }}
+          status: ${{ env.BORED_COMMA }}
           color: 'yellow'
           path: ./bored/loc.svg
 
