@@ -1,8 +1,6 @@
-name: Badges V2
-'on':
-  push:
-    branches:
-      - main
+name: Badges
+on:
+  schedule: [{cron: "0 0 1/2 * *"}]
 jobs:
   create-bored-cdn-badge:
       name: Create Bored CDN Badges
