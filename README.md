@@ -7,7 +7,7 @@
   <a href="https://discord.com/invite/7qTNdXd"><img src="https://img.shields.io/badge/Discord-7qTNdXd?logo=discord&logoColor=white&color=5865F2"></a>
   <a href="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/Bored-Entertainment/badges/actions/workflows/pages/pages-build-deployment/badge.svg"></a>
   <a href="https://github.com/Bored-Entertainment/badges/commits/main"><img src="https://img.shields.io/github/last-commit/Bored-Entertainment/badges"></a>
-  <a href="https://github.com/Bored-Entertainment/badges/commits/main"><img src="https://badgen.net/github/commits/pisaucer/boredhtml/"></a>
+  <a href="https://github.com/Bored-Entertainment/badges/commits/main"><img src="https://badgen.net/github/commits/Bored-Entertainment/badges/main"></a>
   <a href="LICENSE"><img src="https://badgen.net/github/license/Bored-Entertainment/badges"></a>
   <img src="https://img.shields.io/github/repo-size/Bored-Entertainment/badges?color=green">  
       
