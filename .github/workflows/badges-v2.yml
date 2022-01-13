@@ -328,4 +328,122 @@ jobs:
           with:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             branch: ${{ steps.extract_branch.outputs.branch }}
-  
+  create-loc-badge:
+      needs: create-school-cdn-badge
+      name: Create Lines of Code Badges
+      runs-on: ubuntu-latest
+      steps:
+        # Setup
+        - name: Checkout 🛎️
+          uses: actions/checkout@v2
+          with:
+            persist-credentials: false
+        - name: Sigin to git
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git pull
+            
+        # Remove Old Badges
+        - name: Remove Old Bored Badges
+          run: |
+            git rm bored/loc.svg
+            git rm school/loc.svg
+            git commit -m "Remove Lines of Code Badges"
+            
+        # Installing 
+        - name: install tokei
+          run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
+        - name: cloning boredhtml
+          run: "git clone https://github.com/PiSaucer/boredhtml.git"
+        - name: cloning schoolgroudns
+          run: "git clone https://github.com/Bored-Entertainment/Schoolgrounds.git"
+        
+        # Run Tokei
+        - name: Bored Tokei 
+          run: tokei boredhtml --output json > bored.json
+        - name: School Tokei 
+          run: tokei Schoolgrounds --output json > school.json
+        
+        # Read Data
+        - name: Read Bored Data From Json
+          id: bored-read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'bored.json'
+            prop_path: 'Total.code'
+        - name: Read School Data From Json
+          id: school-read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'school.json'
+            prop_path: 'Total.code'
+            
+        # Add Commas to Data
+        - name: Comma Data
+          id: comma
+          run: |
+            echo "::set-output name=bored_comma::`echo ${{ steps.school-bored-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
+            echo "::set-output name=school_comma::`echo ${{ steps.school-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
+           
+        # Create Images   
+        - name: Generate the bored badge SVG image
+          uses: emibcn/badge-action@v1
+          id: bored-badge
+          with:
+            label: 'total lines'
+            status: ${{ steps.comma.outputs.bored_comma }}
+            color: 'yellow'
+            path: ./bored/loc.svg
+        - name: Generate the school badge SVG image
+          uses: emibcn/badge-action@v1
+          id: school-badge
+          with:
+            label: 'total lines'
+            status: ${{ steps.comma.outputs.school_comma }}
+            color: 'orange'
+            path: ./school/loc.svg
+        
+        # Upload Badges
+        - name: Upload bored badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: bored-badge
+            path: ./bored/loc.svg
+            if-no-files-found: error
+        - name: Upload school badge as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: school-badge
+            path: ./school/loc.svg
+            if-no-files-found: error
+        
+        # Find the Main Branch
+        - name: Extract branch name
+          shell: bash
+          run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          id: extract_branch
+          
+        # Get Time
+        - name: Get current time
+          uses: josStorer/get-current-time@v2
+          id: current-time
+          with:
+            format: MM.DD.YYYY
+            
+        # Commit Badges
+        - name: Commit badges
+          env:
+            BORED_BADGE: ./bored/loc.svg
+            SCHOOL_BADGE: ./school/loc.svg
+          run: |
+            git add "${BORED_BADGE}"
+            git add "${SCHOOL_BADGE}"
+            git commit -m "Lines of Code Badges ${{ steps.current-time.outputs.formattedTime }}"
+            
+        - name: Push Badge commit
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            branch: ${{ steps.extract_branch.outputs.branch }}
+
