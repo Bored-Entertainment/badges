@@ -13,13 +13,19 @@
       
 </div>
 
-## Badges
+# Badges
 - [Bored in School Right Now Badges](bored/)
+    - [Lines of Code](bored/#lines-of-code) 
+    - [Daily](bored/#daily)
+    - [Weekly](bored/#weekly)
+    - [Monthly](bored/#monthly)
+    - [Yearly](bored/#yearly)
 - [Schoolgrounds Badges](school/)
-
-## Domains
-- [badges.boredht.ml](https://badges.boredht.ml/)
-- [badges.schgnd.ml](https://badges.schgnd.ml/)
+    - [Lines of Code](school/#lines-of-code) 
+    - [Daily](school/#daily)
+    - [Weekly](school/#weekly)
+    - [Monthly](school/#monthly)
+    - [Yearly](school/#yearly)
 
 ## CDNs Badges
 
@@ -33,11 +39,20 @@ Since GitHub actions runs ubuntu, we are able to install [tokei](https://github.
 
 # Built with
 - [GitHub Actions](https://github.com/features/actions)
+    - [notiz-dev/github-action-json-property](https://github.com/marketplace/actions/get-json-property)
+    - [emibcn/badge-action](https://github.com/marketplace/actions/badge-action)
+    - [actions/upload-artifact](https://github.com/marketplace/actions/upload-a-build-artifact)
+    - [josStorer/get-current-time](https://github.com/marketplace/actions/get-current-time)
+    - [ad-m/github-push-action](https://github.com/marketplace/actions/github-push)
 - [jsDelivr](https://www.jsdelivr.com/)
-- [data.jsdelivr.com](https://github.com/jsdelivr/data.jsdelivr.com)
-- [boredhtml](https://www.github.com/pisaucer/boredhtml)
-- [notiz-dev/github-action-json-property](https://github.com/marketplace/actions/get-json-property)
-- [emibcn/badge-action](https://github.com/marketplace/actions/badge-action)
+    - [data.jsdelivr.com](https://github.com/jsdelivr/data.jsdelivr.com)
+- [Bored Entertainment](https://github.com/Bored-Entertainment)
+    - [boredhtml](https://www.github.com/pisaucer/boredhtml)
+    - [schoolgrounds](https://github.com/Bored-Entertainment/schoolgrounds)
+
+# Domains
+- [badges.boredht.ml](https://badges.boredht.ml/)
+- [badges.schgnd.ml](https://badges.schgnd.ml/)
 
 # Authors
 
@@ -47,7 +62,7 @@ See also the list of other [contributors](https://github.com/Bored-Entertainment
 
 # Contributing
 
-Pull requests are welcome. If you find any problem(s) in boredhtml, feel free to submit an issue. This includes stuff like vulnerabilities, or even the most trivial issues (such as typoes.) If you know how to fix an issue, feel free to make a pull request for the issue. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our [code of conduct](CODE_OF_CONDUCT.md), and the process for submitting pull requests to us. If you would like to suggest a feature or change, submit it as an issue as well or message us on [discord](https://discord.com/invite/7qTNdXd); it will be given the appropriate tag once we have seen it. We love to discuss any major changes with you.
+Pull requests are welcome. If you find any problem(s) in boredhtml, feel free to submit an issue. This includes stuff like vulnerabilities, or even the most trivial issues (such as typoes.) If you know how to fix an issue, feel free to make a pull request for the issue. Please read [CONTRIBUTING](CONTRIBUTING.md) for details on our [code of conduct](CODE_OF_CONDUCT.md), and the process for submitting pull requests to us. If you would like to suggest a feature or change, submit it as an issue as well or message us on [discord](https://discord.com/invite/7qTNdXd); it will be given the appropriate tag once we have seen it. We love to discuss any major changes with you.
 
 # License ![badge](https://badgen.net/github/license/Bored-Entertainment/badges)
 
