@@ -383,7 +383,7 @@ jobs:
         - name: Comma Data
           id: comma
           run: |
-            echo "::set-output name=bored_comma::`echo ${{ steps.school-bored-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
+            echo "::set-output name=bored_comma::`echo ${{ steps.bored-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`" 
             echo "::set-output name=school_comma::`echo ${{ steps.school-read-data.outputs.prop }} | sed ':a;s/\B[0-9]\{3\}\>/,&/;ta'`"
            
         # Create Images   
