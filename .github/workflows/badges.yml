@@ -184,6 +184,7 @@ jobs:
         - name: Remove Old Bored Badges
           run: |
             git rm bored/loc.svg
+            git rm bored/v1-loc.svg
             git commit -m "Remove Lines of Code Badges"
             
         # Installing 
@@ -191,10 +192,14 @@ jobs:
           run: "cargo install --git https://github.com/XAMPPRocky/tokei.git tokei"
         - name: cloning boredhtml
           run: "git clone https://github.com/PiSaucer/boredhtml.git"
+        - name: cloning boredhtml_v1
+          run: "git clone https://github.com/PiSaucer/boredhtml_v1.git"
         
         # Run Tokei
         - name: Bored Tokei 
           run: tokei boredhtml --output json > bored.json
+        - name: Bored_v1 Tokei 
+          run: tokei boredhtml_v1 --output json > bored_v1.json
         
         # Read Data
         - name: Read Bored Data From Json
@@ -202,6 +207,12 @@ jobs:
           uses: notiz-dev/github-action-json-property@release
           with: 
             path: 'bored.json'
+            prop_path: 'Total.code'
+        - name: Read Bored Data From Json
+          id: bored-v1-read-data
+          uses: notiz-dev/github-action-json-property@release
+          with: 
+            path: 'bored_v1.json'
             prop_path: 'Total.code'
             
         # Add Commas to Data
@@ -219,6 +230,14 @@ jobs:
             status: ${{ steps.comma.outputs.bored_comma }}
             color: 'yellow'
             path: ./bored/loc.svg
+        - name: Generate the bored badge-v1 SVG image
+          uses: emibcn/badge-action@v1
+          id: bored-v1-badge
+          with:
+            label: 'total lines'
+            status: ${{ steps.comma.outputs.bored_comma }}
+            color: 'yellow'
+            path: ./bored/v1-loc.svg
         
         # Upload Badges
         - name: Upload bored badge as artifact
@@ -226,6 +245,12 @@ jobs:
           with:
             name: bored-badge
             path: ./bored/loc.svg
+            if-no-files-found: error
+        - name: Upload bored badge-v1 as artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: bored-v1-badge
+            path: ./bored/v1-loc.svg
             if-no-files-found: error
         
         # Find the Main Branch
@@ -245,8 +270,10 @@ jobs:
         - name: Commit badges
           env:
             BORED_BADGE: ./bored/loc.svg
+            BORED_V1_BADGE: ./bored/v1-loc.svg
           run: |
             git add "${BORED_BADGE}"
+            git add "${BORED_V1_BADGE}"
             git commit -m "Lines of Code Badges ${{ steps.current-time.outputs.formattedTime }}"
             
         - name: Push Badge commit
