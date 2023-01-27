@@ -15,7 +15,6 @@
 
 # Badges
 - [Bored in School Right Now Badges](bored/)
-- [Schoolgrounds Badges](school/)
 
 # How does it work?
 
