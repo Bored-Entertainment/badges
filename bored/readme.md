@@ -2,11 +2,18 @@
 
 [![Badges](https://github.com/Bored-Entertainment/badges/actions/workflows/badges.yml/badge.svg)](https://github.com/Bored-Entertainment/badges/actions/workflows/badges.yml)
 
-## Lines of Code
+## Lines of Code - New Version
 ![loc](loc.svg)
 
 ```markdown
 ![lines of code](https://badges.boredht.ml/bored/loc.svg)
+```
+
+## Lines of Code - v1
+![v1-loc](v1-loc.svg)
+
+```markdown
+![lines of code](https://badges.boredht.ml/bored/v1-loc.svg)
 ```
 
 ## Daily 
