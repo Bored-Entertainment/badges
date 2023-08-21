@@ -19,13 +19,14 @@ jobs:
             
         # Fetch API
         - name: Fetch Day API Data 📦
-          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/day > day.json
+          # run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/day > day.json
+          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=day
         - name: Fetch Month API Data 📦
-          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/month > month.json
+          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=month > month.json
         - name: Fetch Week API Data 📦
-          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/week > week.json
+          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=week > week.json
         - name: Fetch Year API Data 📦
-          run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/year > year.json
+          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=year > year.json
 
         # Read Data
         - name: Read Day Data From Json 📚
@@ -33,25 +34,25 @@ jobs:
           uses: notiz-dev/github-action-json-property@release
           with: 
             path: 'day.json'
-            prop_path: 'total'
+            prop_path: 'hits.total'
         - name: Read Month Data From Json 📚
           id: read-month-data
           uses: notiz-dev/github-action-json-property@release
           with: 
             path: 'month.json'
-            prop_path: 'total'
+            prop_path: 'hits.total'
         - name: Read Week Data From Json 📚
           id: read-week-data
           uses: notiz-dev/github-action-json-property@release
           with: 
             path: 'week.json'
-            prop_path: 'total'
+            prop_path: 'hits.total'
         - name: Read Year Data From Json 📚
           id: read-year-data
           uses: notiz-dev/github-action-json-property@release
           with: 
             path: 'year.json'
-            prop_path: 'total'
+            prop_path: 'hits.total'
             
         # Add Commas to Data
         - name: Comma Data
