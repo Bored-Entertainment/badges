@@ -19,8 +19,7 @@ jobs:
             
         # Fetch API
         - name: Fetch Day API Data 📦
-          # run: curl https://data.jsdelivr.com/v1/package/gh/pisaucer/boredhtml/stats/version/day > day.json
-          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=day
+          run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=day > day.json
         - name: Fetch Month API Data 📦
           run: curl https://data.jsdelivr.com/v1/stats/packages/gh/pisaucer/boredhtml?period=month > month.json
         - name: Fetch Week API Data 📦
@@ -77,7 +76,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: day-badge
           with:
-            label: 'cdn.boredht.ml'
+            label: 'bored-cdn.pisaucer.com'
             status: ${{ steps.comma.outputs.day_comma }} hits/today
             color: 'yellow'
             path: ./bored/day.svg
@@ -85,7 +84,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: month-badge
           with:
-            label: 'cdn.boredht.ml'
+            label: 'bored-cdn.pisaucer.com'
             status: ${{ steps.comma.outputs.month_comma }} hits/month
             color: 'yellow'
             path: ./bored/month.svg
@@ -93,7 +92,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: week-badge
           with:
-            label: 'cdn.boredht.ml'
+            label: 'bored-cdn.pisaucer.com'
             status: ${{ steps.comma.outputs.week_comma }} hits/week
             color: 'yellow'
             path: ./bored/week.svg
@@ -101,7 +100,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: year-badge
           with:
-            label: 'cdn.boredht.ml'
+            label: 'bored-cdn.pisaucer.com'
             status: ${{ steps.comma.outputs.year_comma }} hits/year
             color: 'yellow'
             path: ./bored/year.svg
@@ -235,7 +234,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: bored-v1-badge
           with:
-            label: 'total lines'
+            label: '(v1) total lines'
             status: ${{ steps.comma.outputs.bored_comma }}
             color: 'yellow'
             path: ./bored/v1-loc.svg
