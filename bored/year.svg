@@ -1,0 +1,20 @@
+<svg width="253.3" height="20" viewBox="0 0 2533 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="bored-cdn.pisaucer.com: 140,972 hits/year">
+  <title>bored-cdn.pisaucer.com: 140,972 hits/year</title>
+  <linearGradient id="a" x2="0" y2="100%">
+    <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <mask id="m"><rect width="2533" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#m)">
+    <rect width="1440" height="200" fill="#555"/>
+    <rect width="1093" height="200" fill="#DB1" x="1440"/>
+    <rect width="2533" height="200" fill="url(#a)"/>
+  </g>
+  <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+    <text x="60" y="148" textLength="1340" fill="#000" opacity="0.25">bored-cdn.pisaucer.com</text>
+    <text x="50" y="138" textLength="1340">bored-cdn.pisaucer.com</text>
+    <text x="1495" y="148" textLength="993" fill="#000" opacity="0.25">140,972 hits/year</text>
+    <text x="1485" y="138" textLength="993">140,972 hits/year</text>
+  </g>
+  
+</svg>
