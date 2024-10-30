@@ -76,7 +76,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: day-badge
           with:
-            label: 'bored-cdn.pisaucer.com'
+            label: 'jsdelivr'
             status: ${{ steps.comma.outputs.day_comma }} hits/today
             color: 'yellow'
             path: ./bored/day.svg
@@ -84,7 +84,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: month-badge
           with:
-            label: 'bored-cdn.pisaucer.com'
+            label: 'jsdelivr'
             status: ${{ steps.comma.outputs.month_comma }} hits/month
             color: 'yellow'
             path: ./bored/month.svg
@@ -92,7 +92,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: week-badge
           with:
-            label: 'bored-cdn.pisaucer.com'
+            label: 'jsdelivr'
             status: ${{ steps.comma.outputs.week_comma }} hits/week
             color: 'yellow'
             path: ./bored/week.svg
@@ -100,7 +100,7 @@ jobs:
           uses: emibcn/badge-action@v1
           id: year-badge
           with:
-            label: 'bored-cdn.pisaucer.com'
+            label: 'jsdelivr'
             status: ${{ steps.comma.outputs.year_comma }} hits/year
             color: 'yellow'
             path: ./bored/year.svg
