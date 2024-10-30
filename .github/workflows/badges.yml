@@ -107,25 +107,25 @@ jobs:
             
         # Upload Badges
         - name: Upload Day badge as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: day-badge
             path: ./bored/day.svg
             if-no-files-found: error
         - name: Upload Month badge as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: month-badge
             path: ./bored/month.svg
             if-no-files-found: error
         - name: Upload Week badge as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: week-badge
             path: ./bored/week.svg
             if-no-files-found: error
         - name: Upload Year badge as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: year-badge
             path: ./bored/year.svg
@@ -241,13 +241,13 @@ jobs:
         
         # Upload Badges
         - name: Upload bored badge as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: bored-badge
             path: ./bored/loc.svg
             if-no-files-found: error
         - name: Upload bored badge-v1 as artifact
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: bored-v1-badge
             path: ./bored/v1-loc.svg
